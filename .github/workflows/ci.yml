@@ -133,7 +133,7 @@ jobs:
 
       - name: Run playwright job in cluster      
         run: |
-           kubectl apply -f k8s/playwright-job.yml
+           kubectl apply -f k8s/playwright-github-job.yml
 
       - name: Debug cluster
         run: |
