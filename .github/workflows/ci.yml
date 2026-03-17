@@ -36,6 +36,7 @@ jobs:
       - name: Push image
         run: |
           docker push ${IMAGE_NAME}:${{ github.sha }}
+          docker push ${IMAGE_NAME}:latest
     
   # -----------------------------
   # PLAYWRIGHT TESTS
@@ -65,7 +66,7 @@ jobs:
           npx wait-on http://localhost:3000
 
       - name: Run Playwright tests
-        run: npx playwright test --worker=3 --reporter=list --output=test-results --reporter=html --reporter=json --reporter=mochawesome  
+        run: npx playwright test --workers=3 --reporter=list --output=test-results --reporter=html --reporter=json --reporter=mochawesome  
       
         # Artefakte hochladen
       - name: Upload Playwright artifacts
@@ -132,7 +133,7 @@ jobs:
 
       - name: Run playwright job in cluster      
         run: |
-          sed "s|IMAGE_TAG|${{ github.sha }}|g" k8s/playwright-github-job.yml | kubectl apply -f -
+           kubectl apply -f k8s/playwright-job.yml
 
       - name: Debug cluster
         run: |

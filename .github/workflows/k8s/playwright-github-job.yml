@@ -13,7 +13,7 @@ spec:
           emptyDir: {}      
       containers:
         - name: playwright
-          image: ghcr.io/thanhtrungtran-testautomation/portfolio-playwright/app:IMAGE_TAG
+          image: ghcr.io/thanhtrungtran-testautomation/portfolio-playwright/app:latest
           volumeMounts:
             - name: queue
               mountPath: /queue          
