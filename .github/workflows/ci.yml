@@ -1,0 +1,160 @@
+name: Playwright CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+env:
+  IMAGE_NAME: ghcr.io/thanhtrungtran-testautomation/portfolio-playwright/app  
+
+jobs:
+  # -----------------------------
+  # BUILD DOCKER IMAGE
+  # -----------------------------
+  build-image:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+      - uses: actions/checkout@v6
+         
+      - name: Login to GHCR
+        run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
+
+      - name: Build image
+        run: |
+          docker build \
+          --cache-from=${IMAGE_NAME}:latest \
+          -t ${IMAGE_NAME}:${{ github.sha }} \
+          -t ${IMAGE_NAME}:latest .
+
+      - name: Push image
+        run: |
+          docker push ${IMAGE_NAME}:${{ github.sha }}
+    
+  # -----------------------------
+  # PLAYWRIGHT TESTS
+  # -----------------------------
+  playwright-tests:
+      needs: build-image
+      runs-on: ubuntu-latest
+      container:
+        image: ghcr.io/thanhtrungtran-testautomation/portfolio-playwright/app:${{ github.sha }}
+      steps:
+      - uses: actions/checkout@v6
+
+      #- name: Pull image
+      #  run: |         
+      #    docker pull ${IMAGE_NAME}:${{ github.sha }}
+
+      #- name: Start container
+      #  run: |       
+      #    docker run -d -p 3000:3000 ${IMAGE_NAME}:${{ github.sha }}        
+                           
+      - name: Install dependencies
+        run: npm ci
+           
+      - name: Start demo app
+        run: |
+          node demo-app/server.js &
+          npx wait-on http://localhost:3000
+
+      - name: Run Playwright tests
+        run: npx playwright test --worker=3 --reporter=list --output=test-results --reporter=html --reporter=json --reporter=mochawesome  
+      
+        # Artefakte hochladen
+      - name: Upload Playwright artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-report
+          path: |            
+            playwright-report
+            test-results
+# ------------------------------------------------
+# PLAYWRIGHT TEST IN KUBERNETES
+# ------------------------------------------------
+  playwright-kubernetes-cluster:
+    needs: build-image    
+    runs-on: ubuntu-latest
+    #container:
+    #  image: bitnami/kubectl:latest
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Setup kubectl
+        uses: azure/setup-kubectl@v3
+        with:
+          version: 'v1.30.0'
+
+      - name: Setup kind
+        uses: engineerd/setup-kind@v0.6.2
+        with:
+          version: "v0.24.0"
+
+      - name: Create kind cluster
+        run: |
+          kind create cluster --name playwright --wait 5m
+
+      - name: Create namespace
+        run: |
+          kubectl create namespace playwright-test --dry-run=client -o yaml | kubectl apply -f -
+          
+      - name: Pull image from GHCR
+        run: |
+          docker pull ${IMAGE_NAME}:${{ github.sha }}
+
+      - name: Check local images
+        run: docker images
+      
+      - name: Load built image into kind
+        run: |
+          kind load docker-image ${IMAGE_NAME}:${{ github.sha }} --name playwright
+
+      - name: Check cluster
+        run: |
+          kubectl cluster-info
+          kubectl get nodes
+
+      #- name: Setup kubeconfig
+      #  run: |
+      #    echo "${{ secrets.KUBE_CONFIG }}" > kubeconfig
+      #    export KUBECONFIG=$PWD/kubeconfig >> $GITHUB_ENV
+      #    kubectl config view --kubeconfig=kubeconfig
+
+      #- name: Test cluster connection
+      #  run: KUBECONFIG=$PWD/kubeconfig kubectl get nodes
+
+      - name: Run playwright job in cluster      
+        run: |
+          sed "s|IMAGE_TAG|${{ github.sha }}|g" k8s/playwright-github-job.yml | kubectl apply -f -
+
+      - name: Debug cluster
+        run: |
+          kubectl get jobs -A
+          kubectl get pods -n playwright-test
+          kubectl get pods -A
+
+      - name: Debug jobs
+        run: kubectl get jobs -n playwright-test
+
+      - name: Describe pod
+        run: |
+          kubectl describe pod -n playwright-test
+
+      - name: Wait for Job
+        run: |
+          kubectl wait \
+          --for=condition=complete \
+          job/playwright-run \
+          --namespace playwright-test \
+          --timeout=600s
+
+      - name: Show pod logs
+        run: |
+          kubectl logs -n playwright-test -l job-name=playwright-run

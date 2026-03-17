@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<body>
+  <h1>Login Demo</h1>
+
+  <input id="username" name="username" placeholder="Username"/>
+  <input id="password" name="password" type="password" placeholder="Password"/>
+  <button type="submit" onclick="login()">Login</button>
+
+  <p id="result"></p>
+
+<script>
+async function login() {
+  const res = await fetch('/api/login', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      username: document.getElementById('username').value,
+      password: document.getElementById('password').value
+    })
+  })
+
+  if (res.status === 200) {
+    window.location.href = '/dashboard.html'
+  } else {
+    document.getElementById('result').innerText = "Fail"
+  }
+}
+</script>
+
+</body>
+</html>

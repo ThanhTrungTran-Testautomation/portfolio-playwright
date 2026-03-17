@@ -1,0 +1,23 @@
+# Playwright End-to-End Test Automation Portfolio
+
+Dieses Portfolio demonstriert eine modulare und skalierbare Architektur für End-to-End-Testautomatisierung mit Playwright.
+Die Lösung basiert auf dem Page Object Model Ansatz, Custom Commands und einer strukturierten Testarchitektur.
+Die E2E-Tests sind containerisiert mit Docker, kontinuierlich in CI/CD-Pipelines über Gitlab CI integriert und für eine skalierbare, cloud-native Ausführung in Kubernetes-Clustern konzipiert.
+
+## Architektur
+- Page Object Model (POM): Strukturierung der UI-Interaktionen in wiederverwendbare Seitenobjekte zur Kapselung von Selektoren und Aktionen sowie zur Verbesserung von Wartbarkeit und Lesbarkeit
+- Custom Commands: wiederverwendbare Befehle zur Reduzierung von Redundanz und Erhöhung der Testklarheit
+- Fixtures: Externe Verwaltung von Testressourcen wie Testdaten und UI-Selektoren zur klaren Trennung von Testlogik
+- Utilities: Helper Funktionen, Environment Handling  
+
+## CI/CD
+- GitLab CI/CD Pipeline mit build und test stages  
+- Artefakt-Sicherung: Screenshots und Reports  
+- MR-Trigger und Headless Execution  
+
+## Kubernetes & Containerization
+- Dockerfile: Playwright + Browser Container  
+- Kubernetes Job: skalierbare, reproduzierbare Testausführung
+
+## Autor
+M.Sc. Thanh-Trung Tran

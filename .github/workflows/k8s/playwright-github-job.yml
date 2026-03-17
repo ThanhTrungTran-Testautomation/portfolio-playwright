@@ -1,0 +1,46 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: playwright-worker
+  namespace: playwright-test
+spec:
+  completions: 4
+  parallelism: 4
+  template:
+    spec:
+      volumes:
+        - name: queue
+          emptyDir: {}      
+      containers:
+        - name: playwright
+          image: ghcr.io/thanhtrungtran-testautomation/portfolio-playwright/app:IMAGE_TAG
+          volumeMounts:
+            - name: queue
+              mountPath: /queue          
+          # Environment Variables für URLs
+          env:
+            - name: PLAYWRIGHT_baseUrl
+              value: "http://localhost:3000"   # Base URL für Tests
+            - name: JOB_COMPLETION_INDEX
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.annotations['batch.kubernetes.io/job-completion-index']           
+          command:
+            - sh
+            - -c
+            - |
+              echo "Runner index: $JOB_COMPLETION_INDEX"
+              #echo "Pod index: $HOSTNAME"
+              npm ci
+              # App im Hintergrund starten
+              node demo-app/server.js &
+              # Warten bis App auf localhost:3000 bereit ist
+              npx wait-on http://localhost:3000
+              
+              ./scripts/create-queue.sh
+
+              ./scripts/worker.sh
+                   
+
+      restartPolicy: Never
+  backoffLimit: 1
