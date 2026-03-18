@@ -2,7 +2,7 @@
 # ----------------------------------
 # Base Image mit Node + Browsern
 # ----------------------------------
-FROM mcr.microsoft.com/playwright:v1.45.0-jammy AS builder
+FROM mcr.microsoft.com/playwright:v1.58.2-jammy AS builder
 
 # ----------------------------------
 # Arbeitsverzeichnis
@@ -36,7 +36,7 @@ ENV CYPRESS_loginPath="/login"
 ENV CYPRESS_dashboardPath="/dashboard"
 
 # ---------- Runtime Stage ----------
-FROM mcr.microsoft.com/playwright:v1.45.0-jammy
+FROM mcr.microsoft.com/playwright:v1.58.2-jammy
 
 WORKDIR /app
 

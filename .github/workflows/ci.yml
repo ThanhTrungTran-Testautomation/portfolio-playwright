@@ -152,7 +152,7 @@ jobs:
         run: |
           kubectl wait \
           --for=condition=complete \
-          job/playwright-run \
+          job/playwright-worker \
           --namespace playwright-test \
           --timeout=600s
 
