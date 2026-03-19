@@ -39,9 +39,14 @@ spec:
               # Warten bis App auf localhost:3000 bereit ist
               npx wait-on http://localhost:3000
               echo "Running tests on pod: $HOSTNAME"              
-              ./scripts/create-queue.sh
-              
-              ./scripts/worker.sh                   
+              INDEX=${JOB_COMPLETION_INDEX}
+              TOTAL=4
+
+              SHARD=$((INDEX+1))
+
+              echo "Running shard $SHARD of $TOTAL"
+
+              npx playwright test --shard=$SHARD/$TOTAL                  
 
       restartPolicy: Never
   backoffLimit: 1

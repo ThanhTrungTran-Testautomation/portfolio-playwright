@@ -11,7 +11,7 @@
     "grepInvert": null,
     "maxFailures": 0,
     "metadata": {
-      "actualWorkers": 3
+      "actualWorkers": 4
     },
     "preserveOutput": "always",
     "projects": [
@@ -20,7 +20,7 @@
         "repeatEach": 1,
         "retries": 0,
         "metadata": {
-          "actualWorkers": 3
+          "actualWorkers": 4
         },
         "id": "chromium",
         "name": "chromium",
@@ -36,7 +36,7 @@
         "repeatEach": 1,
         "retries": 0,
         "metadata": {
-          "actualWorkers": 3
+          "actualWorkers": 4
         },
         "id": "firefox",
         "name": "firefox",
@@ -52,7 +52,7 @@
         "repeatEach": 1,
         "retries": 0,
         "metadata": {
-          "actualWorkers": 3
+          "actualWorkers": 4
         },
         "id": "webkit",
         "name": "webkit",
@@ -92,14 +92,14 @@
   },
   "suites": [
     {
-      "title": "Login.spec.ts",
-      "file": "Login.spec.ts",
+      "title": "Dashboard.spec.ts",
+      "file": "Dashboard.spec.ts",
       "column": 0,
       "line": 0,
       "specs": [
         {
-          "title": "has title",
-          "ok": true,
+          "title": "Dashboard is visible after login",
+          "ok": false,
           "tags": [],
           "tests": [
             {
@@ -112,28 +112,52 @@
                 {
                   "workerIndex": 0,
                   "parallelIndex": 0,
-                  "status": "passed",
-                  "duration": 1740,
-                  "errors": [],
+                  "status": "failed",
+                  "duration": 4529,
+                  "error": {
+                    "message": "Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3000/login\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3000/login\", waiting until \"load\"\u001b[22m\n",
+                    "stack": "Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3000/login\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3000/login\", waiting until \"load\"\u001b[22m\n\n    at LoginPage.goto (C:\\Users\\trant\\OneDrive\\Dokumente\\Unterlagen - Trung\\Projekt\\portfolio-playwright\\tests\\pages\\LoginPage.ts:13:21)\n    at LoginPage.login (C:\\Users\\trant\\OneDrive\\Dokumente\\Unterlagen - Trung\\Projekt\\portfolio-playwright\\tests\\pages\\LoginPage.ts:29:16)\n    at C:\\Users\\trant\\OneDrive\\Dokumente\\Unterlagen - Trung\\Projekt\\portfolio-playwright\\tests\\Dashboard.spec.ts:12:19",
+                    "location": {
+                      "file": "C:\\Users\\trant\\OneDrive\\Dokumente\\Unterlagen - Trung\\Projekt\\portfolio-playwright\\tests\\pages\\LoginPage.ts",
+                      "column": 21,
+                      "line": 13
+                    },
+                    "snippet": "\u001b[90m   at \u001b[39mpages\\LoginPage.ts:13\n\n\u001b[0m \u001b[90m 11 |\u001b[39m\n \u001b[90m 12 |\u001b[39m   \u001b[36masync\u001b[39m goto() {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 13 |\u001b[39m     \u001b[36mawait\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mpage\u001b[33m.\u001b[39mgoto(\u001b[32m'/login'\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                     \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 14 |\u001b[39m   }\n \u001b[90m 15 |\u001b[39m\n \u001b[90m 16 |\u001b[39m   \u001b[36masync\u001b[39m fillUsername(username\u001b[33m:\u001b[39m string) {\u001b[0m"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "C:\\Users\\trant\\OneDrive\\Dokumente\\Unterlagen - Trung\\Projekt\\portfolio-playwright\\tests\\pages\\LoginPage.ts",
+                        "column": 21,
+                        "line": 13
+                      },
+                      "message": "Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3000/login\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3000/login\", waiting until \"load\"\u001b[22m\n\n\n\u001b[90m   at \u001b[39mpages\\LoginPage.ts:13\n\n\u001b[0m \u001b[90m 11 |\u001b[39m\n \u001b[90m 12 |\u001b[39m   \u001b[36masync\u001b[39m goto() {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 13 |\u001b[39m     \u001b[36mawait\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mpage\u001b[33m.\u001b[39mgoto(\u001b[32m'/login'\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                     \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 14 |\u001b[39m   }\n \u001b[90m 15 |\u001b[39m\n \u001b[90m 16 |\u001b[39m   \u001b[36masync\u001b[39m fillUsername(username\u001b[33m:\u001b[39m string) {\u001b[0m\n\u001b[2m    at LoginPage.goto (C:\\Users\\trant\\OneDrive\\Dokumente\\Unterlagen - Trung\\Projekt\\portfolio-playwright\\tests\\pages\\LoginPage.ts:13:21)\u001b[22m\n\u001b[2m    at LoginPage.login (C:\\Users\\trant\\OneDrive\\Dokumente\\Unterlagen - Trung\\Projekt\\portfolio-playwright\\tests\\pages\\LoginPage.ts:29:16)\u001b[22m\n\u001b[2m    at C:\\Users\\trant\\OneDrive\\Dokumente\\Unterlagen - Trung\\Projekt\\portfolio-playwright\\tests\\Dashboard.spec.ts:12:19\u001b[22m"
+                    }
+                  ],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-03-17T20:05:05.154Z",
+                  "startTime": "2026-03-19T21:58:28.837Z",
                   "annotations": [],
-                  "attachments": []
+                  "attachments": [],
+                  "errorLocation": {
+                    "file": "C:\\Users\\trant\\OneDrive\\Dokumente\\Unterlagen - Trung\\Projekt\\portfolio-playwright\\tests\\pages\\LoginPage.ts",
+                    "column": 21,
+                    "line": 13
+                  }
                 }
               ],
-              "status": "expected"
+              "status": "unexpected"
             }
           ],
-          "id": "42af536f2c838a173cb6-50e40af8f253a82ec4ff",
-          "file": "Login.spec.ts",
-          "line": 3,
+          "id": "6f964abe73d65bf97be3-74c865f5c3e0e84d59ef",
+          "file": "Dashboard.spec.ts",
+          "line": 8,
           "column": 5
         },
         {
-          "title": "has title",
-          "ok": true,
+          "title": "Dashboard is visible after login",
+          "ok": false,
           "tags": [],
           "tests": [
             {
@@ -144,30 +168,60 @@
               "projectName": "firefox",
               "results": [
                 {
-                  "workerIndex": 1,
-                  "parallelIndex": 1,
-                  "status": "passed",
-                  "duration": 2479,
-                  "errors": [],
+                  "workerIndex": 3,
+                  "parallelIndex": 3,
+                  "status": "failed",
+                  "duration": 5849,
+                  "error": {
+                    "message": "Error: page.goto: NS_ERROR_CONNECTION_REFUSED\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3000/login\", waiting until \"load\"\u001b[22m\n",
+                    "stack": "Error: page.goto: NS_ERROR_CONNECTION_REFUSED\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3000/login\", waiting until \"load\"\u001b[22m\n\n    at LoginPage.goto (C:\\Users\\trant\\OneDrive\\Dokumente\\Unterlagen - Trung\\Projekt\\portfolio-playwright\\tests\\pages\\LoginPage.ts:13:21)\n    at LoginPage.login (C:\\Users\\trant\\OneDrive\\Dokumente\\Unterlagen - Trung\\Projekt\\portfolio-playwright\\tests\\pages\\LoginPage.ts:29:16)\n    at C:\\Users\\trant\\OneDrive\\Dokumente\\Unterlagen - Trung\\Projekt\\portfolio-playwright\\tests\\Dashboard.spec.ts:12:19",
+                    "location": {
+                      "file": "C:\\Users\\trant\\OneDrive\\Dokumente\\Unterlagen - Trung\\Projekt\\portfolio-playwright\\tests\\pages\\LoginPage.ts",
+                      "column": 21,
+                      "line": 13
+                    },
+                    "snippet": "\u001b[90m   at \u001b[39mpages\\LoginPage.ts:13\n\n\u001b[0m \u001b[90m 11 |\u001b[39m\n \u001b[90m 12 |\u001b[39m   \u001b[36masync\u001b[39m goto() {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 13 |\u001b[39m     \u001b[36mawait\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mpage\u001b[33m.\u001b[39mgoto(\u001b[32m'/login'\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                     \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 14 |\u001b[39m   }\n \u001b[90m 15 |\u001b[39m\n \u001b[90m 16 |\u001b[39m   \u001b[36masync\u001b[39m fillUsername(username\u001b[33m:\u001b[39m string) {\u001b[0m"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "C:\\Users\\trant\\OneDrive\\Dokumente\\Unterlagen - Trung\\Projekt\\portfolio-playwright\\tests\\pages\\LoginPage.ts",
+                        "column": 21,
+                        "line": 13
+                      },
+                      "message": "Error: page.goto: NS_ERROR_CONNECTION_REFUSED\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3000/login\", waiting until \"load\"\u001b[22m\n\n\n\u001b[90m   at \u001b[39mpages\\LoginPage.ts:13\n\n\u001b[0m \u001b[90m 11 |\u001b[39m\n \u001b[90m 12 |\u001b[39m   \u001b[36masync\u001b[39m goto() {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 13 |\u001b[39m     \u001b[36mawait\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mpage\u001b[33m.\u001b[39mgoto(\u001b[32m'/login'\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                     \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 14 |\u001b[39m   }\n \u001b[90m 15 |\u001b[39m\n \u001b[90m 16 |\u001b[39m   \u001b[36masync\u001b[39m fillUsername(username\u001b[33m:\u001b[39m string) {\u001b[0m\n\u001b[2m    at LoginPage.goto (C:\\Users\\trant\\OneDrive\\Dokumente\\Unterlagen - Trung\\Projekt\\portfolio-playwright\\tests\\pages\\LoginPage.ts:13:21)\u001b[22m\n\u001b[2m    at LoginPage.login (C:\\Users\\trant\\OneDrive\\Dokumente\\Unterlagen - Trung\\Projekt\\portfolio-playwright\\tests\\pages\\LoginPage.ts:29:16)\u001b[22m\n\u001b[2m    at C:\\Users\\trant\\OneDrive\\Dokumente\\Unterlagen - Trung\\Projekt\\portfolio-playwright\\tests\\Dashboard.spec.ts:12:19\u001b[22m"
+                    }
+                  ],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-03-17T20:05:05.129Z",
+                  "startTime": "2026-03-19T21:58:28.874Z",
                   "annotations": [],
-                  "attachments": []
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\trant\\OneDrive\\Dokumente\\Unterlagen - Trung\\Projekt\\portfolio-playwright\\test-results\\Dashboard-Dashboard-is-visible-after-login-firefox\\error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "C:\\Users\\trant\\OneDrive\\Dokumente\\Unterlagen - Trung\\Projekt\\portfolio-playwright\\tests\\pages\\LoginPage.ts",
+                    "column": 21,
+                    "line": 13
+                  }
                 }
               ],
-              "status": "expected"
+              "status": "unexpected"
             }
           ],
-          "id": "42af536f2c838a173cb6-84a13e0184c50ed0e5fb",
-          "file": "Login.spec.ts",
-          "line": 3,
+          "id": "6f964abe73d65bf97be3-6aae5e4c802874172e7d",
+          "file": "Dashboard.spec.ts",
+          "line": 8,
           "column": 5
         },
         {
-          "title": "has title",
-          "ok": true,
+          "title": "Dashboard is visible after login",
+          "ok": false,
           "tags": [],
           "tests": [
             {
@@ -178,25 +232,425 @@
               "projectName": "webkit",
               "results": [
                 {
-                  "workerIndex": 2,
-                  "parallelIndex": 2,
-                  "status": "passed",
-                  "duration": 2133,
-                  "errors": [],
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 2853,
+                  "error": {
+                    "message": "Error: page.goto: Could not connect to server\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3000/login\", waiting until \"load\"\u001b[22m\n",
+                    "stack": "Error: page.goto: Could not connect to server\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3000/login\", waiting until \"load\"\u001b[22m\n\n    at LoginPage.goto (C:\\Users\\trant\\OneDrive\\Dokumente\\Unterlagen - Trung\\Projekt\\portfolio-playwright\\tests\\pages\\LoginPage.ts:13:21)\n    at LoginPage.login (C:\\Users\\trant\\OneDrive\\Dokumente\\Unterlagen - Trung\\Projekt\\portfolio-playwright\\tests\\pages\\LoginPage.ts:29:16)\n    at C:\\Users\\trant\\OneDrive\\Dokumente\\Unterlagen - Trung\\Projekt\\portfolio-playwright\\tests\\Dashboard.spec.ts:12:19",
+                    "location": {
+                      "file": "C:\\Users\\trant\\OneDrive\\Dokumente\\Unterlagen - Trung\\Projekt\\portfolio-playwright\\tests\\pages\\LoginPage.ts",
+                      "column": 21,
+                      "line": 13
+                    },
+                    "snippet": "\u001b[90m   at \u001b[39mpages\\LoginPage.ts:13\n\n\u001b[0m \u001b[90m 11 |\u001b[39m\n \u001b[90m 12 |\u001b[39m   \u001b[36masync\u001b[39m goto() {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 13 |\u001b[39m     \u001b[36mawait\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mpage\u001b[33m.\u001b[39mgoto(\u001b[32m'/login'\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                     \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 14 |\u001b[39m   }\n \u001b[90m 15 |\u001b[39m\n \u001b[90m 16 |\u001b[39m   \u001b[36masync\u001b[39m fillUsername(username\u001b[33m:\u001b[39m string) {\u001b[0m"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "C:\\Users\\trant\\OneDrive\\Dokumente\\Unterlagen - Trung\\Projekt\\portfolio-playwright\\tests\\pages\\LoginPage.ts",
+                        "column": 21,
+                        "line": 13
+                      },
+                      "message": "Error: page.goto: Could not connect to server\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3000/login\", waiting until \"load\"\u001b[22m\n\n\n\u001b[90m   at \u001b[39mpages\\LoginPage.ts:13\n\n\u001b[0m \u001b[90m 11 |\u001b[39m\n \u001b[90m 12 |\u001b[39m   \u001b[36masync\u001b[39m goto() {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 13 |\u001b[39m     \u001b[36mawait\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mpage\u001b[33m.\u001b[39mgoto(\u001b[32m'/login'\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                     \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 14 |\u001b[39m   }\n \u001b[90m 15 |\u001b[39m\n \u001b[90m 16 |\u001b[39m   \u001b[36masync\u001b[39m fillUsername(username\u001b[33m:\u001b[39m string) {\u001b[0m\n\u001b[2m    at LoginPage.goto (C:\\Users\\trant\\OneDrive\\Dokumente\\Unterlagen - Trung\\Projekt\\portfolio-playwright\\tests\\pages\\LoginPage.ts:13:21)\u001b[22m\n\u001b[2m    at LoginPage.login (C:\\Users\\trant\\OneDrive\\Dokumente\\Unterlagen - Trung\\Projekt\\portfolio-playwright\\tests\\pages\\LoginPage.ts:29:16)\u001b[22m\n\u001b[2m    at C:\\Users\\trant\\OneDrive\\Dokumente\\Unterlagen - Trung\\Projekt\\portfolio-playwright\\tests\\Dashboard.spec.ts:12:19\u001b[22m"
+                    }
+                  ],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-03-17T20:05:05.177Z",
+                  "startTime": "2026-03-19T21:58:36.386Z",
                   "annotations": [],
-                  "attachments": []
+                  "attachments": [],
+                  "errorLocation": {
+                    "file": "C:\\Users\\trant\\OneDrive\\Dokumente\\Unterlagen - Trung\\Projekt\\portfolio-playwright\\tests\\pages\\LoginPage.ts",
+                    "column": 21,
+                    "line": 13
+                  }
                 }
               ],
-              "status": "expected"
+              "status": "unexpected"
             }
           ],
-          "id": "42af536f2c838a173cb6-e98db2544adb3a950328",
+          "id": "6f964abe73d65bf97be3-0071e517eec722806913",
+          "file": "Dashboard.spec.ts",
+          "line": 8,
+          "column": 5
+        }
+      ]
+    },
+    {
+      "title": "Form.spec.ts",
+      "file": "Form.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "User can submit form successfully",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "failed",
+                  "duration": 4522,
+                  "error": {
+                    "message": "Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3000/form.html\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3000/form.html\", waiting until \"load\"\u001b[22m\n",
+                    "stack": "Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3000/form.html\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3000/form.html\", waiting until \"load\"\u001b[22m\n\n    at FormPage.goto (C:\\Users\\trant\\OneDrive\\Dokumente\\Unterlagen - Trung\\Projekt\\portfolio-playwright\\tests\\pages\\FormPage.ts:13:21)\n    at FormPage.submitForm (C:\\Users\\trant\\OneDrive\\Dokumente\\Unterlagen - Trung\\Projekt\\portfolio-playwright\\tests\\pages\\FormPage.ts:36:16)\n    at C:\\Users\\trant\\OneDrive\\Dokumente\\Unterlagen - Trung\\Projekt\\portfolio-playwright\\tests\\Form.spec.ts:11:18",
+                    "location": {
+                      "file": "C:\\Users\\trant\\OneDrive\\Dokumente\\Unterlagen - Trung\\Projekt\\portfolio-playwright\\tests\\pages\\FormPage.ts",
+                      "column": 21,
+                      "line": 13
+                    },
+                    "snippet": "\u001b[90m   at \u001b[39mpages\\FormPage.ts:13\n\n\u001b[0m \u001b[90m 11 |\u001b[39m\n \u001b[90m 12 |\u001b[39m   \u001b[36masync\u001b[39m goto() {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 13 |\u001b[39m     \u001b[36mawait\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mpage\u001b[33m.\u001b[39mgoto(\u001b[32m'/form.html'\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                     \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 14 |\u001b[39m   }\n \u001b[90m 15 |\u001b[39m\n \u001b[90m 16 |\u001b[39m   \u001b[36masync\u001b[39m fillFirstName(name\u001b[33m:\u001b[39m string) {\u001b[0m"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "C:\\Users\\trant\\OneDrive\\Dokumente\\Unterlagen - Trung\\Projekt\\portfolio-playwright\\tests\\pages\\FormPage.ts",
+                        "column": 21,
+                        "line": 13
+                      },
+                      "message": "Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3000/form.html\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3000/form.html\", waiting until \"load\"\u001b[22m\n\n\n\u001b[90m   at \u001b[39mpages\\FormPage.ts:13\n\n\u001b[0m \u001b[90m 11 |\u001b[39m\n \u001b[90m 12 |\u001b[39m   \u001b[36masync\u001b[39m goto() {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 13 |\u001b[39m     \u001b[36mawait\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mpage\u001b[33m.\u001b[39mgoto(\u001b[32m'/form.html'\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                     \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 14 |\u001b[39m   }\n \u001b[90m 15 |\u001b[39m\n \u001b[90m 16 |\u001b[39m   \u001b[36masync\u001b[39m fillFirstName(name\u001b[33m:\u001b[39m string) {\u001b[0m\n\u001b[2m    at FormPage.goto (C:\\Users\\trant\\OneDrive\\Dokumente\\Unterlagen - Trung\\Projekt\\portfolio-playwright\\tests\\pages\\FormPage.ts:13:21)\u001b[22m\n\u001b[2m    at FormPage.submitForm (C:\\Users\\trant\\OneDrive\\Dokumente\\Unterlagen - Trung\\Projekt\\portfolio-playwright\\tests\\pages\\FormPage.ts:36:16)\u001b[22m\n\u001b[2m    at C:\\Users\\trant\\OneDrive\\Dokumente\\Unterlagen - Trung\\Projekt\\portfolio-playwright\\tests\\Form.spec.ts:11:18\u001b[22m"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-03-19T21:58:28.812Z",
+                  "annotations": [],
+                  "attachments": [],
+                  "errorLocation": {
+                    "file": "C:\\Users\\trant\\OneDrive\\Dokumente\\Unterlagen - Trung\\Projekt\\portfolio-playwright\\tests\\pages\\FormPage.ts",
+                    "column": 21,
+                    "line": 13
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "2b35757ce090a787085d-43984074cd592e3e158c",
+          "file": "Form.spec.ts",
+          "line": 8,
+          "column": 5
+        },
+        {
+          "title": "User can submit form successfully",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "firefox",
+              "projectName": "firefox",
+              "results": [
+                {
+                  "workerIndex": 5,
+                  "parallelIndex": 1,
+                  "status": "failed",
+                  "duration": 4790,
+                  "error": {
+                    "message": "Error: page.goto: NS_ERROR_CONNECTION_REFUSED\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3000/form.html\", waiting until \"load\"\u001b[22m\n",
+                    "stack": "Error: page.goto: NS_ERROR_CONNECTION_REFUSED\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3000/form.html\", waiting until \"load\"\u001b[22m\n\n    at FormPage.goto (C:\\Users\\trant\\OneDrive\\Dokumente\\Unterlagen - Trung\\Projekt\\portfolio-playwright\\tests\\pages\\FormPage.ts:13:21)\n    at FormPage.submitForm (C:\\Users\\trant\\OneDrive\\Dokumente\\Unterlagen - Trung\\Projekt\\portfolio-playwright\\tests\\pages\\FormPage.ts:36:16)\n    at C:\\Users\\trant\\OneDrive\\Dokumente\\Unterlagen - Trung\\Projekt\\portfolio-playwright\\tests\\Form.spec.ts:11:18",
+                    "location": {
+                      "file": "C:\\Users\\trant\\OneDrive\\Dokumente\\Unterlagen - Trung\\Projekt\\portfolio-playwright\\tests\\pages\\FormPage.ts",
+                      "column": 21,
+                      "line": 13
+                    },
+                    "snippet": "\u001b[90m   at \u001b[39mpages\\FormPage.ts:13\n\n\u001b[0m \u001b[90m 11 |\u001b[39m\n \u001b[90m 12 |\u001b[39m   \u001b[36masync\u001b[39m goto() {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 13 |\u001b[39m     \u001b[36mawait\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mpage\u001b[33m.\u001b[39mgoto(\u001b[32m'/form.html'\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                     \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 14 |\u001b[39m   }\n \u001b[90m 15 |\u001b[39m\n \u001b[90m 16 |\u001b[39m   \u001b[36masync\u001b[39m fillFirstName(name\u001b[33m:\u001b[39m string) {\u001b[0m"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "C:\\Users\\trant\\OneDrive\\Dokumente\\Unterlagen - Trung\\Projekt\\portfolio-playwright\\tests\\pages\\FormPage.ts",
+                        "column": 21,
+                        "line": 13
+                      },
+                      "message": "Error: page.goto: NS_ERROR_CONNECTION_REFUSED\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3000/form.html\", waiting until \"load\"\u001b[22m\n\n\n\u001b[90m   at \u001b[39mpages\\FormPage.ts:13\n\n\u001b[0m \u001b[90m 11 |\u001b[39m\n \u001b[90m 12 |\u001b[39m   \u001b[36masync\u001b[39m goto() {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 13 |\u001b[39m     \u001b[36mawait\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mpage\u001b[33m.\u001b[39mgoto(\u001b[32m'/form.html'\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                     \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 14 |\u001b[39m   }\n \u001b[90m 15 |\u001b[39m\n \u001b[90m 16 |\u001b[39m   \u001b[36masync\u001b[39m fillFirstName(name\u001b[33m:\u001b[39m string) {\u001b[0m\n\u001b[2m    at FormPage.goto (C:\\Users\\trant\\OneDrive\\Dokumente\\Unterlagen - Trung\\Projekt\\portfolio-playwright\\tests\\pages\\FormPage.ts:13:21)\u001b[22m\n\u001b[2m    at FormPage.submitForm (C:\\Users\\trant\\OneDrive\\Dokumente\\Unterlagen - Trung\\Projekt\\portfolio-playwright\\tests\\pages\\FormPage.ts:36:16)\u001b[22m\n\u001b[2m    at C:\\Users\\trant\\OneDrive\\Dokumente\\Unterlagen - Trung\\Projekt\\portfolio-playwright\\tests\\Form.spec.ts:11:18\u001b[22m"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-03-19T21:58:36.340Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\trant\\OneDrive\\Dokumente\\Unterlagen - Trung\\Projekt\\portfolio-playwright\\test-results\\Form-User-can-submit-form-successfully-firefox\\error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "C:\\Users\\trant\\OneDrive\\Dokumente\\Unterlagen - Trung\\Projekt\\portfolio-playwright\\tests\\pages\\FormPage.ts",
+                    "column": 21,
+                    "line": 13
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "2b35757ce090a787085d-86220a5ea8ef63b70031",
+          "file": "Form.spec.ts",
+          "line": 8,
+          "column": 5
+        },
+        {
+          "title": "User can submit form successfully",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "webkit",
+              "projectName": "webkit",
+              "results": [
+                {
+                  "workerIndex": 7,
+                  "parallelIndex": 3,
+                  "status": "failed",
+                  "duration": 2581,
+                  "error": {
+                    "message": "Error: page.goto: Could not connect to server\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3000/form.html\", waiting until \"load\"\u001b[22m\n",
+                    "stack": "Error: page.goto: Could not connect to server\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3000/form.html\", waiting until \"load\"\u001b[22m\n\n    at FormPage.goto (C:\\Users\\trant\\OneDrive\\Dokumente\\Unterlagen - Trung\\Projekt\\portfolio-playwright\\tests\\pages\\FormPage.ts:13:21)\n    at FormPage.submitForm (C:\\Users\\trant\\OneDrive\\Dokumente\\Unterlagen - Trung\\Projekt\\portfolio-playwright\\tests\\pages\\FormPage.ts:36:16)\n    at C:\\Users\\trant\\OneDrive\\Dokumente\\Unterlagen - Trung\\Projekt\\portfolio-playwright\\tests\\Form.spec.ts:11:18",
+                    "location": {
+                      "file": "C:\\Users\\trant\\OneDrive\\Dokumente\\Unterlagen - Trung\\Projekt\\portfolio-playwright\\tests\\pages\\FormPage.ts",
+                      "column": 21,
+                      "line": 13
+                    },
+                    "snippet": "\u001b[90m   at \u001b[39mpages\\FormPage.ts:13\n\n\u001b[0m \u001b[90m 11 |\u001b[39m\n \u001b[90m 12 |\u001b[39m   \u001b[36masync\u001b[39m goto() {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 13 |\u001b[39m     \u001b[36mawait\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mpage\u001b[33m.\u001b[39mgoto(\u001b[32m'/form.html'\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                     \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 14 |\u001b[39m   }\n \u001b[90m 15 |\u001b[39m\n \u001b[90m 16 |\u001b[39m   \u001b[36masync\u001b[39m fillFirstName(name\u001b[33m:\u001b[39m string) {\u001b[0m"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "C:\\Users\\trant\\OneDrive\\Dokumente\\Unterlagen - Trung\\Projekt\\portfolio-playwright\\tests\\pages\\FormPage.ts",
+                        "column": 21,
+                        "line": 13
+                      },
+                      "message": "Error: page.goto: Could not connect to server\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3000/form.html\", waiting until \"load\"\u001b[22m\n\n\n\u001b[90m   at \u001b[39mpages\\FormPage.ts:13\n\n\u001b[0m \u001b[90m 11 |\u001b[39m\n \u001b[90m 12 |\u001b[39m   \u001b[36masync\u001b[39m goto() {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 13 |\u001b[39m     \u001b[36mawait\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mpage\u001b[33m.\u001b[39mgoto(\u001b[32m'/form.html'\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                     \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 14 |\u001b[39m   }\n \u001b[90m 15 |\u001b[39m\n \u001b[90m 16 |\u001b[39m   \u001b[36masync\u001b[39m fillFirstName(name\u001b[33m:\u001b[39m string) {\u001b[0m\n\u001b[2m    at FormPage.goto (C:\\Users\\trant\\OneDrive\\Dokumente\\Unterlagen - Trung\\Projekt\\portfolio-playwright\\tests\\pages\\FormPage.ts:13:21)\u001b[22m\n\u001b[2m    at FormPage.submitForm (C:\\Users\\trant\\OneDrive\\Dokumente\\Unterlagen - Trung\\Projekt\\portfolio-playwright\\tests\\pages\\FormPage.ts:36:16)\u001b[22m\n\u001b[2m    at C:\\Users\\trant\\OneDrive\\Dokumente\\Unterlagen - Trung\\Projekt\\portfolio-playwright\\tests\\Form.spec.ts:11:18\u001b[22m"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-03-19T21:58:40.954Z",
+                  "annotations": [],
+                  "attachments": [],
+                  "errorLocation": {
+                    "file": "C:\\Users\\trant\\OneDrive\\Dokumente\\Unterlagen - Trung\\Projekt\\portfolio-playwright\\tests\\pages\\FormPage.ts",
+                    "column": 21,
+                    "line": 13
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "2b35757ce090a787085d-20bd647672b26a988f14",
+          "file": "Form.spec.ts",
+          "line": 8,
+          "column": 5
+        }
+      ]
+    },
+    {
+      "title": "Login.spec.ts",
+      "file": "Login.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "User can login successfully",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 2,
+                  "status": "failed",
+                  "duration": 4528,
+                  "error": {
+                    "message": "Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3000/login\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3000/login\", waiting until \"load\"\u001b[22m\n",
+                    "stack": "Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3000/login\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3000/login\", waiting until \"load\"\u001b[22m\n\n    at LoginPage.goto (C:\\Users\\trant\\OneDrive\\Dokumente\\Unterlagen - Trung\\Projekt\\portfolio-playwright\\tests\\pages\\LoginPage.ts:13:21)\n    at LoginPage.login (C:\\Users\\trant\\OneDrive\\Dokumente\\Unterlagen - Trung\\Projekt\\portfolio-playwright\\tests\\pages\\LoginPage.ts:29:16)\n    at C:\\Users\\trant\\OneDrive\\Dokumente\\Unterlagen - Trung\\Projekt\\portfolio-playwright\\tests\\Login.spec.ts:10:19",
+                    "location": {
+                      "file": "C:\\Users\\trant\\OneDrive\\Dokumente\\Unterlagen - Trung\\Projekt\\portfolio-playwright\\tests\\pages\\LoginPage.ts",
+                      "column": 21,
+                      "line": 13
+                    },
+                    "snippet": "\u001b[90m   at \u001b[39mpages\\LoginPage.ts:13\n\n\u001b[0m \u001b[90m 11 |\u001b[39m\n \u001b[90m 12 |\u001b[39m   \u001b[36masync\u001b[39m goto() {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 13 |\u001b[39m     \u001b[36mawait\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mpage\u001b[33m.\u001b[39mgoto(\u001b[32m'/login'\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                     \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 14 |\u001b[39m   }\n \u001b[90m 15 |\u001b[39m\n \u001b[90m 16 |\u001b[39m   \u001b[36masync\u001b[39m fillUsername(username\u001b[33m:\u001b[39m string) {\u001b[0m"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "C:\\Users\\trant\\OneDrive\\Dokumente\\Unterlagen - Trung\\Projekt\\portfolio-playwright\\tests\\pages\\LoginPage.ts",
+                        "column": 21,
+                        "line": 13
+                      },
+                      "message": "Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3000/login\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3000/login\", waiting until \"load\"\u001b[22m\n\n\n\u001b[90m   at \u001b[39mpages\\LoginPage.ts:13\n\n\u001b[0m \u001b[90m 11 |\u001b[39m\n \u001b[90m 12 |\u001b[39m   \u001b[36masync\u001b[39m goto() {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 13 |\u001b[39m     \u001b[36mawait\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mpage\u001b[33m.\u001b[39mgoto(\u001b[32m'/login'\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                     \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 14 |\u001b[39m   }\n \u001b[90m 15 |\u001b[39m\n \u001b[90m 16 |\u001b[39m   \u001b[36masync\u001b[39m fillUsername(username\u001b[33m:\u001b[39m string) {\u001b[0m\n\u001b[2m    at LoginPage.goto (C:\\Users\\trant\\OneDrive\\Dokumente\\Unterlagen - Trung\\Projekt\\portfolio-playwright\\tests\\pages\\LoginPage.ts:13:21)\u001b[22m\n\u001b[2m    at LoginPage.login (C:\\Users\\trant\\OneDrive\\Dokumente\\Unterlagen - Trung\\Projekt\\portfolio-playwright\\tests\\pages\\LoginPage.ts:29:16)\u001b[22m\n\u001b[2m    at C:\\Users\\trant\\OneDrive\\Dokumente\\Unterlagen - Trung\\Projekt\\portfolio-playwright\\tests\\Login.spec.ts:10:19\u001b[22m"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-03-19T21:58:28.975Z",
+                  "annotations": [],
+                  "attachments": [],
+                  "errorLocation": {
+                    "file": "C:\\Users\\trant\\OneDrive\\Dokumente\\Unterlagen - Trung\\Projekt\\portfolio-playwright\\tests\\pages\\LoginPage.ts",
+                    "column": 21,
+                    "line": 13
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "42af536f2c838a173cb6-a081f2de822673cf10ba",
           "file": "Login.spec.ts",
-          "line": 3,
+          "line": 7,
+          "column": 5
+        },
+        {
+          "title": "User can login successfully",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "firefox",
+              "projectName": "firefox",
+              "results": [
+                {
+                  "workerIndex": 6,
+                  "parallelIndex": 2,
+                  "status": "failed",
+                  "duration": 5069,
+                  "error": {
+                    "message": "Error: page.goto: NS_ERROR_CONNECTION_REFUSED\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3000/login\", waiting until \"load\"\u001b[22m\n",
+                    "stack": "Error: page.goto: NS_ERROR_CONNECTION_REFUSED\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3000/login\", waiting until \"load\"\u001b[22m\n\n    at LoginPage.goto (C:\\Users\\trant\\OneDrive\\Dokumente\\Unterlagen - Trung\\Projekt\\portfolio-playwright\\tests\\pages\\LoginPage.ts:13:21)\n    at LoginPage.login (C:\\Users\\trant\\OneDrive\\Dokumente\\Unterlagen - Trung\\Projekt\\portfolio-playwright\\tests\\pages\\LoginPage.ts:29:16)\n    at C:\\Users\\trant\\OneDrive\\Dokumente\\Unterlagen - Trung\\Projekt\\portfolio-playwright\\tests\\Login.spec.ts:10:19",
+                    "location": {
+                      "file": "C:\\Users\\trant\\OneDrive\\Dokumente\\Unterlagen - Trung\\Projekt\\portfolio-playwright\\tests\\pages\\LoginPage.ts",
+                      "column": 21,
+                      "line": 13
+                    },
+                    "snippet": "\u001b[90m   at \u001b[39mpages\\LoginPage.ts:13\n\n\u001b[0m \u001b[90m 11 |\u001b[39m\n \u001b[90m 12 |\u001b[39m   \u001b[36masync\u001b[39m goto() {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 13 |\u001b[39m     \u001b[36mawait\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mpage\u001b[33m.\u001b[39mgoto(\u001b[32m'/login'\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                     \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 14 |\u001b[39m   }\n \u001b[90m 15 |\u001b[39m\n \u001b[90m 16 |\u001b[39m   \u001b[36masync\u001b[39m fillUsername(username\u001b[33m:\u001b[39m string) {\u001b[0m"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "C:\\Users\\trant\\OneDrive\\Dokumente\\Unterlagen - Trung\\Projekt\\portfolio-playwright\\tests\\pages\\LoginPage.ts",
+                        "column": 21,
+                        "line": 13
+                      },
+                      "message": "Error: page.goto: NS_ERROR_CONNECTION_REFUSED\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3000/login\", waiting until \"load\"\u001b[22m\n\n\n\u001b[90m   at \u001b[39mpages\\LoginPage.ts:13\n\n\u001b[0m \u001b[90m 11 |\u001b[39m\n \u001b[90m 12 |\u001b[39m   \u001b[36masync\u001b[39m goto() {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 13 |\u001b[39m     \u001b[36mawait\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mpage\u001b[33m.\u001b[39mgoto(\u001b[32m'/login'\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                     \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 14 |\u001b[39m   }\n \u001b[90m 15 |\u001b[39m\n \u001b[90m 16 |\u001b[39m   \u001b[36masync\u001b[39m fillUsername(username\u001b[33m:\u001b[39m string) {\u001b[0m\n\u001b[2m    at LoginPage.goto (C:\\Users\\trant\\OneDrive\\Dokumente\\Unterlagen - Trung\\Projekt\\portfolio-playwright\\tests\\pages\\LoginPage.ts:13:21)\u001b[22m\n\u001b[2m    at LoginPage.login (C:\\Users\\trant\\OneDrive\\Dokumente\\Unterlagen - Trung\\Projekt\\portfolio-playwright\\tests\\pages\\LoginPage.ts:29:16)\u001b[22m\n\u001b[2m    at C:\\Users\\trant\\OneDrive\\Dokumente\\Unterlagen - Trung\\Projekt\\portfolio-playwright\\tests\\Login.spec.ts:10:19\u001b[22m"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-03-19T21:58:36.337Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\trant\\OneDrive\\Dokumente\\Unterlagen - Trung\\Projekt\\portfolio-playwright\\test-results\\Login-User-can-login-successfully-firefox\\error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "C:\\Users\\trant\\OneDrive\\Dokumente\\Unterlagen - Trung\\Projekt\\portfolio-playwright\\tests\\pages\\LoginPage.ts",
+                    "column": 21,
+                    "line": 13
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "42af536f2c838a173cb6-d2c61b4a661cf7d7bcae",
+          "file": "Login.spec.ts",
+          "line": 7,
+          "column": 5
+        },
+        {
+          "title": "User can login successfully",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "webkit",
+              "projectName": "webkit",
+              "results": [
+                {
+                  "workerIndex": 8,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 2526,
+                  "error": {
+                    "message": "Error: page.goto: Could not connect to server\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3000/login\", waiting until \"load\"\u001b[22m\n",
+                    "stack": "Error: page.goto: Could not connect to server\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3000/login\", waiting until \"load\"\u001b[22m\n\n    at LoginPage.goto (C:\\Users\\trant\\OneDrive\\Dokumente\\Unterlagen - Trung\\Projekt\\portfolio-playwright\\tests\\pages\\LoginPage.ts:13:21)\n    at LoginPage.login (C:\\Users\\trant\\OneDrive\\Dokumente\\Unterlagen - Trung\\Projekt\\portfolio-playwright\\tests\\pages\\LoginPage.ts:29:16)\n    at C:\\Users\\trant\\OneDrive\\Dokumente\\Unterlagen - Trung\\Projekt\\portfolio-playwright\\tests\\Login.spec.ts:10:19",
+                    "location": {
+                      "file": "C:\\Users\\trant\\OneDrive\\Dokumente\\Unterlagen - Trung\\Projekt\\portfolio-playwright\\tests\\pages\\LoginPage.ts",
+                      "column": 21,
+                      "line": 13
+                    },
+                    "snippet": "\u001b[90m   at \u001b[39mpages\\LoginPage.ts:13\n\n\u001b[0m \u001b[90m 11 |\u001b[39m\n \u001b[90m 12 |\u001b[39m   \u001b[36masync\u001b[39m goto() {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 13 |\u001b[39m     \u001b[36mawait\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mpage\u001b[33m.\u001b[39mgoto(\u001b[32m'/login'\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                     \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 14 |\u001b[39m   }\n \u001b[90m 15 |\u001b[39m\n \u001b[90m 16 |\u001b[39m   \u001b[36masync\u001b[39m fillUsername(username\u001b[33m:\u001b[39m string) {\u001b[0m"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "C:\\Users\\trant\\OneDrive\\Dokumente\\Unterlagen - Trung\\Projekt\\portfolio-playwright\\tests\\pages\\LoginPage.ts",
+                        "column": 21,
+                        "line": 13
+                      },
+                      "message": "Error: page.goto: Could not connect to server\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3000/login\", waiting until \"load\"\u001b[22m\n\n\n\u001b[90m   at \u001b[39mpages\\LoginPage.ts:13\n\n\u001b[0m \u001b[90m 11 |\u001b[39m\n \u001b[90m 12 |\u001b[39m   \u001b[36masync\u001b[39m goto() {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 13 |\u001b[39m     \u001b[36mawait\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mpage\u001b[33m.\u001b[39mgoto(\u001b[32m'/login'\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                     \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 14 |\u001b[39m   }\n \u001b[90m 15 |\u001b[39m\n \u001b[90m 16 |\u001b[39m   \u001b[36masync\u001b[39m fillUsername(username\u001b[33m:\u001b[39m string) {\u001b[0m\n\u001b[2m    at LoginPage.goto (C:\\Users\\trant\\OneDrive\\Dokumente\\Unterlagen - Trung\\Projekt\\portfolio-playwright\\tests\\pages\\LoginPage.ts:13:21)\u001b[22m\n\u001b[2m    at LoginPage.login (C:\\Users\\trant\\OneDrive\\Dokumente\\Unterlagen - Trung\\Projekt\\portfolio-playwright\\tests\\pages\\LoginPage.ts:29:16)\u001b[22m\n\u001b[2m    at C:\\Users\\trant\\OneDrive\\Dokumente\\Unterlagen - Trung\\Projekt\\portfolio-playwright\\tests\\Login.spec.ts:10:19\u001b[22m"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-03-19T21:58:41.806Z",
+                  "annotations": [],
+                  "attachments": [],
+                  "errorLocation": {
+                    "file": "C:\\Users\\trant\\OneDrive\\Dokumente\\Unterlagen - Trung\\Projekt\\portfolio-playwright\\tests\\pages\\LoginPage.ts",
+                    "column": 21,
+                    "line": 13
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "42af536f2c838a173cb6-1c76056ea8102818f4f3",
+          "file": "Login.spec.ts",
+          "line": 7,
           "column": 5
         }
       ]
@@ -204,11 +658,11 @@
   ],
   "errors": [],
   "stats": {
-    "startTime": "2026-03-17T20:05:03.430Z",
-    "duration": 8102.578,
-    "expected": 3,
+    "startTime": "2026-03-19T21:58:26.771Z",
+    "duration": 17710.169,
+    "expected": 0,
     "skipped": 0,
-    "unexpected": 0,
+    "unexpected": 9,
     "flaky": 0
   }
 }
