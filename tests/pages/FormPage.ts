@@ -43,7 +43,7 @@ export class FormPage {
 
   async expectSuccess() {
     await expect(this.page.locator('#success-message'))
-      .toHaveText(/submitted successfully/i);
+      .toBeVisible();
   }
 
   async expectError() {

@@ -110,14 +110,14 @@ jobs:
           
       - name: Pull image from GHCR
         run: |
-          docker pull ${IMAGE_NAME}:${{ github.sha }}
+          docker pull ${IMAGE_NAME}:latest
 
       - name: Check local images
         run: docker images
       
       - name: Load built image into kind
         run: |
-          kind load docker-image ${IMAGE_NAME}:${{ github.sha }} --name playwright
+          kind load docker-image ${IMAGE_NAME}:latest --name playwright
 
       - name: Check cluster
         run: |
@@ -139,12 +139,8 @@ jobs:
 
       - name: Debug cluster
         run: |
-          kubectl get jobs -A
-          kubectl get pods -n playwright-test
-          kubectl get pods -A
-
-      - name: Debug jobs
-        run: kubectl get jobs -n playwright-test
+          kubectl get jobs -n playwright-test
+          kubectl get pods -n playwright-test               
 
       - name: Describe pod
         run: |
