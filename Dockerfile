@@ -34,7 +34,7 @@ RUN mkdir -p /app/results /app/cypress/screenshots /app/cypress/videos
 ENV CYPRESS_baseUrl="http://localhost:3000"
 ENV CYPRESS_loginPath="/login"
 ENV CYPRESS_dashboardPath="/dashboard"
-
+ENV HOME=/root
 # ---------- Runtime Stage ----------
 FROM mcr.microsoft.com/playwright:v1.58.2-jammy
 
