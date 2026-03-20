@@ -160,6 +160,8 @@ jobs:
 
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: playwright-report
+          path: |
+            playwright-report
+            test-results
 
       - uses: actions/deploy-pages@v4

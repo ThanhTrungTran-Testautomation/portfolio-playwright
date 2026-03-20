@@ -19,13 +19,33 @@
     </select>
     <button type="submit">Submit</button>
   </form>
-
+  <!-- Success -->
   <div class="success-message" style="display:none;">submitted successfully</div>
-
+  <!-- Error -->
+  <div class="error-message" style="display:none; color:red;">please fill all fields correctly</div>
   <script>
     document.getElementById('demo-form').addEventListener('submit', function(e) {
-      e.preventDefault()
-      document.querySelector('.success-message').style.display = 'block'
+      e.preventDefault();
+      const firstName = document.querySelector('input[name="firstName"]').value.trim();
+      const lastName = document.querySelector('input[name="lastName"]').value.trim();
+      const email = document.querySelector('input[name="email"]').value.trim();
+      const country = document.querySelector('select[name="country"]').value;
+
+      const success = document.querySelector('.success-message');
+      const error = document.querySelector('.error-message');
+
+      // Reset messages
+      success.style.display = 'none';
+      error.style.display = 'none';
+
+      // einfache Validierung
+      if (!firstName || !lastName || !email || !country || !email.includes('@')) {
+        error.style.display = 'block';
+        return;
+      }
+
+      // Erfolg
+      success.style.display = 'block';
     })
   </script>
 

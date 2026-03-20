@@ -12,3 +12,11 @@ test('User can submit form successfully', async ({ page }) => {
 
   await formPage.expectSuccess();
 });
+
+test('User can not submit form successfully', async ({ page }) => {
+  const formPage = new FormPage(page);
+
+  await formPage.submitForm(invalidForm);
+
+  await formPage.expectError();
+});

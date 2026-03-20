@@ -41,13 +41,11 @@ export class FormPage {
     await this.submit();
   }
 
-  async expectSuccess() {
-    await expect(this.page.locator('#success-message'))
-      .toBeVisible();
+  async expectSuccess() {    
+    await expect(this.page.locator('.success-message')).toHaveText('submitted successfully');     
   }
 
   async expectError() {
-    await expect(this.page.locator('#error-message'))
-      .toBeVisible();
+    await expect(this.page.locator('.error-message')).toHaveText('please fill all fields correctly');      
   }
 }
