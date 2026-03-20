@@ -138,9 +138,9 @@ jobs:
       #- name: Test cluster connection
       #  run: KUBECONFIG=$PWD/kubeconfig kubectl get nodes
 
-      - name: Set image
+      - name: Inject image tag
         run: |
-          kubectl set image job/playwright-worker playwright=${IMAGE_NAME}:${{ github.sha }} -n playwright-test
+          sed -i "s|IMAGE_TAG|${{ github.sha }}|g" k8s/playwright-github-job.yml
       
       - name: Run playwright job in cluster      
         run: |
