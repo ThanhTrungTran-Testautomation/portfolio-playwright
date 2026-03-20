@@ -156,12 +156,10 @@ jobs:
 
       - name: Show pod logs
         run: |
-          kubectl logs -n playwright-test -l job-name=playwright-run
+          kubectl logs -n playwright-test -l job-name=playwright-worker
 
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: |
-            playwright-report
-            test-results
+          path: playwright-report   
 
       - uses: actions/deploy-pages@v4
