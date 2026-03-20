@@ -53,7 +53,10 @@ spec:
 
               echo "Running shard $SHARD of $TOTAL"
 
-              npx playwright test --shard=$SHARD/$TOTAL --reporter=html --output=/reports/shard-$SHARD
-             
+              if [ "$SHARD" = "1" ]; then
+                npx playwright test --shard=$SHARD/$TOTAL --reporter=html
+              else
+                npx playwright test --shard=$SHARD/$TOTAL
+              fi
       restartPolicy: Never
   backoffLimit: 1
