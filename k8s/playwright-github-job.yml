@@ -49,12 +49,6 @@ spec:
               echo "Running shard $SHARD of $TOTAL"
 
               npx playwright test --shard=$SHARD/$TOTAL --reporter=html --output=playwright-report/shard-$SHARD
-
-              mkdir -p playwright-report
-              for POD in $(kubectl get pod -n playwright-test -l job-name=playwright-worker -o jsonpath="{.items[*].metadata.name}"); do
-                echo "Copying report from $POD"
-                kubectl cp playwright-test/$POD:/app/playwright-report ./playwright-report/$POD
-              done 
-
+             
       restartPolicy: Never
   backoffLimit: 1
