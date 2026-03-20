@@ -6,7 +6,7 @@ metadata:
 spec:
   completions: 4
   parallelism: 4
-  completionMode: Indexed
+  #completionMode: Indexed
   ttlSecondsAfterFinished: 300   # Pods bleiben 5 Minuten nach Job bestehen
   template:
     spec:
