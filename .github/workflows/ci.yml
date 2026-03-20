@@ -168,13 +168,18 @@ jobs:
           mkdir -p playwright-report
           for POD in $(kubectl get pod -n playwright-test -l job-name=playwright-worker -o jsonpath="{.items[*].metadata.name}"); do
             echo "Copying report from $POD"
-            kubectl cp playwright-test/$POD:/app/playwright-report ./playwright-report/$POD || true
+            kubectl cp playwright-test/$POD:/reports ./playwright-report/$POD || echo "No report in $POD"
           done
+
       - name: Prepare final report
         run: |
-          # nimm Report vom ersten Pod
+          mkdir -p final-report
           FIRST_POD=$(ls playwright-report | head -n 1)
-          cp -r playwright-report/$FIRST_POD/* playwright-report/
+          if [ -d "playwright-report/$FIRST_POD" ] && [ "$(ls -A playwright-report/$FIRST_POD)" ]; then
+            cp -r playwright-report/$FIRST_POD/* final-report/
+          else
+            echo "No report files found in $FIRST_POD"
+          fi
       
       - uses: actions/upload-pages-artifact@v3
         with:
