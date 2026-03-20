@@ -162,8 +162,13 @@ jobs:
         run: |
           mkdir -p playwright-report
           for POD in $(kubectl get pod -n playwright-test -l job-name=playwright-worker -o jsonpath="{.items[*].metadata.name}"); do
-            echo "Copying report from $POD"
-            kubectl cp playwright-test/$POD:/app/playwright-report ./playwright-report/$POD
+            STATUS=$(kubectl get pod $POD -n playwright-test -o jsonpath="{.status.phase}")
+            if [ "$STATUS" = "Running" ]; then
+              echo "Copying report from $POD"
+              kubectl cp playwright-test/$POD:/app/playwright-report ./playwright-report/$POD
+            else
+              echo "Skipping $POD (status: $STATUS)"
+            fi
           done
     
       - uses: actions/upload-pages-artifact@v3

@@ -7,18 +7,23 @@ spec:
   completions: 4
   parallelism: 4
   completionMode: Indexed
+  ttlSecondsAfterFinished: 300   # Pods bleiben 5 Minuten nach Job bestehen
   template:
     spec:
       volumes:
         - name: queue
-          emptyDir: {}      
+          emptyDir: {}
+        - name: reports
+          emptyDir: {}    
       containers:
         - name: playwright
           image: ghcr.io/thanhtrungtran-testautomation/portfolio-playwright/app:latest
           imagePullPolicy: IfNotPresent
           volumeMounts:
             - name: queue
-              mountPath: /queue          
+              mountPath: /queue 
+            - name: reports
+              mountPath: /reports         
           # Environment Variables für URLs
           env:
             - name: PLAYWRIGHT_baseUrl
@@ -48,7 +53,7 @@ spec:
 
               echo "Running shard $SHARD of $TOTAL"
 
-              npx playwright test --shard=$SHARD/$TOTAL --reporter=html --output=playwright-report/shard-$SHARD
+              npx playwright test --shard=$SHARD/$TOTAL --reporter=html --output=/reports/shard-$SHARD
              
       restartPolicy: Never
   backoffLimit: 1
