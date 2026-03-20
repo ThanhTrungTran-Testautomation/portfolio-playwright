@@ -179,6 +179,10 @@ jobs:
       - uses: actions/upload-pages-artifact@v3
         with:
           path: playwright-report
-          name: github-pages-artifact            
+          name: github-pages          
+
+      - name: List artifacts (debug)
+        run: |
+          ls -R
 
       - uses: actions/deploy-pages@v4
