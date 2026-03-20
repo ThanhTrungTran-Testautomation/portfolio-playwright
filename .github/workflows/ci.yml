@@ -115,14 +115,14 @@ jobs:
           
       - name: Pull image from GHCR
         run: |
-          docker pull ${IMAGE_NAME}:latest
+          docker pull ${IMAGE_NAME}:${{ github.sha }}
 
       - name: Check local images
         run: docker images
       
       - name: Load built image into kind
         run: |
-          kind load docker-image ${IMAGE_NAME}:latest --name playwright
+          kind load docker-image ${IMAGE_NAME}:${{ github.sha }} --name playwright
 
       - name: Check cluster
         run: |
@@ -138,6 +138,10 @@ jobs:
       #- name: Test cluster connection
       #  run: KUBECONFIG=$PWD/kubeconfig kubectl get nodes
 
+      - name: Set image
+        run: |
+          kubectl set image job/playwright-worker playwright=${IMAGE_NAME}:${{ github.sha }} -n playwright-test
+      
       - name: Run playwright job in cluster      
         run: |
            kubectl apply -f k8s/playwright-github-job.yml
@@ -168,9 +172,14 @@ jobs:
           mkdir -p playwright-report
           for POD in $(kubectl get pod -n playwright-test -l job-name=playwright-worker -o jsonpath="{.items[*].metadata.name}"); do
             echo "Copying report from $POD"
-            kubectl cp playwright-test/$POD:/reports ./playwright-report/$POD || true
+            kubectl cp playwright-test/$POD:/app/playwright-report ./playwright-report/$POD || true
           done
-    
+      - name: Prepare final report
+        run: |
+          # nimm Report vom ersten Pod
+          FIRST_POD=$(ls playwright-report | head -n 1)
+          cp -r playwright-report/$FIRST_POD/* playwright-report/
+      
       - uses: actions/upload-pages-artifact@v3
         with:
           path: playwright-report

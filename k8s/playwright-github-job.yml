@@ -17,7 +17,7 @@ spec:
           emptyDir: {}    
       containers:
         - name: playwright
-          image: ghcr.io/thanhtrungtran-testautomation/portfolio-playwright/app:latest
+          image: ghcr.io/thanhtrungtran-testautomation/portfolio-playwright/app:${IMAGE_TAG}
           imagePullPolicy: IfNotPresent
           volumeMounts:
             - name: queue
