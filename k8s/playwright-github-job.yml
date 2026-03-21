@@ -55,10 +55,10 @@ spec:
               REPORT_DIR=/reports/shard-$SHARD
               mkdir -p $REPORT_DIR
 
-              if [ "$SHARD" = "1" ]; then
-                npx playwright test --shard=$SHARD/$TOTAL --reporter=html --report-dir=$REPORT_DIR
-              else
-                npx playwright test --shard=$SHARD/$TOTAL --report-dir=$REPORT_DIR
-              fi
+              #if [ "$SHARD" = "1" ]; then
+              #  npx playwright test --shard=$SHARD/$TOTAL --reporter=html --report-dir=$REPORT_DIR
+              #else
+              #  npx playwright test --shard=$SHARD/$TOTAL --report-dir=$REPORT_DIR
+              #fi
       restartPolicy: Never
   backoffLimit: 1
