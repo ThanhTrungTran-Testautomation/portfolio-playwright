@@ -19,5 +19,13 @@ Die E2E-Tests sind containerisiert mit Docker, kontinuierlich in CI/CD-Pipelines
 - Dockerfile: Playwright + Browser Container  
 - Kubernetes Job: skalierbare, reproduzierbare Testausführung
 
+## Lizenz
+
+Dieses Projekt steht unter einer benutzerdefinierten Lizenz.
+
+Weitere Details finden Sie in der Datei LICENSE.
+
+Die Nutzung ist ausschließlich zu Lern- und Demonstrationszwecken erlaubt.
+
 ## Autor
 M.Sc. Thanh-Trung Tran
