@@ -8,8 +8,8 @@ export const validForm = {
 };
 
 export const invalidForm = {
-  firstName: '',
-  lastName: '',
+  firstName: 'Max',
+  lastName: 'Mustermann',
   email: 'invalid-email',
-  country: ''
+  country: 'Germany'
 };

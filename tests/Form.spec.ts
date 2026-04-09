@@ -31,12 +31,7 @@ test.describe('Form Submission', () => {
     const formPage = new FormPage(page);
 
     // 1. Submit form with invalid email
-    await formPage.submitForm({
-      firstName: 'John',
-      lastName: 'Doe',
-      email: 'invalid-email',
-      country: 'USA'
-    });
+    await formPage.submitForm(invalidForm);
 
     // 2. Verify error message "please fill all fields correctly" is displayed
     await formPage.expectError();
